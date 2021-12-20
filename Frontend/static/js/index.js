@@ -1,10 +1,21 @@
-const { route } = require("express/lib/application");
-
-const routeri = async () => {
-    const routeri = [
+const router = async () => {
+    const routes = [
         {path:"/", view: () => console.log("Naxulobs Mtavar martvis panels")},
-        {path:"/", view: () => console.log("Naxulobs Postebis gverds")},
-        {path:"/", view: () => console.log("Naxulobs Settingebs")},
+        {path:"/posts", view: () => console.log("Naxulobs Postebis gverds")},
+        {path:"/settings", view: () => console.log("Naxulobs Settingebs")},
     ];
-    const SavaraudoShetavseba = routeri.map(route)
+    const SavaraudoShetavseba = router.map(route => {
+        return{
+            route: route,
+            isMatch: location.pathname === route.path
+        };
+    });
+    console.log(SavaraudoShetavseba);
 };
+document.addEventListener("DomContentLoaded", () => {
+    router();
+});
+
+ 
+
+
